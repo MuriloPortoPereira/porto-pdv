@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes - Sistema de Vendas</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span>Vendas Tech</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span>Dashboard</span></a></li>
+                    <li><a href="vendas.html" class="nav-item"><span class="nav-icon">🛒</span><span>Vendas</span></a></li>
+                    <li><a href="clientes.html" class="nav-item active"><span class="nav-icon">👥</span><span>Clientes</span></a></li>
+                    <li><a href="produtos.html" class="nav-item"><span class="nav-icon">📦</span><span>Produtos</span></a></li>
+                    <li><a href="categorias.html" class="nav-item"><span class="nav-icon">🏷️</span><span>Categorias</span></a></li>
+                    <li><a href="estoque.html" class="nav-item"><span class="nav-icon">📉</span><span>Estoque</span></a></li>
+                    <li><a href="relatorios.html" class="nav-item"><span class="nav-icon">📈</span><span>Relatórios</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="configuracoes.html" class="nav-item"><span class="nav-icon">⚙️</span><span>Configurações</span></a>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">☰</button>
+                    <div class="header-title">Vendas Tech</div>
+                </div>
+
+                <div class="user-area">
+                    <button class="user-trigger" id="user-trigger">
+                        <div class="user-info">
+                            <span class="user-name">Admin</span>
+                            <span class="user-role">Administrador</span>
+                        </div>
+                        <div class="user-avatar">A</div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">▼</span>
+                    </button>
+                    
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="perfil.html" class="dropdown-item">👤 Meu perfil</a>
+                        <a href="configuracoes.html" class="dropdown-item">⚙️ Configurações</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="../login.html" class="dropdown-item" style="color: var(--danger-color);">🚪 Sair</a>
+                    </div>
+                </div>
+            </header>
+
+            <main class="content-area">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Clientes</h1>
+                        <p class="page-subtitle">Gerencie os clientes e acompanhe o histórico de compras.</p>
+                    </div>
+                    <button class="btn btn-primary" id="btn-novo-cliente">
+                        <span>+</span> Novo Cliente
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="filters-bar">
+                        <input type="text" class="form-control search-input" placeholder="Buscar por nome, CPF, e-mail...">
+                        <select class="form-control">
+                            <option value="">Estado (UF)</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="MG">Minas Gerais</option>
+                        </select>
+                        <select class="form-control">
+                            <option value="">Situação</option>
+                            <option value="1">Ativo</option>
+                            <option value="0">Inativo</option>
+                        </select>
+                        <select class="form-control">
+                            <option value="">Histórico</option>
+                            <option value="com_compras">Com compras</option>
+                            <option value="sem_compras">Sem compras</option>
+                        </select>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>CPF</th>
+                                    <th>Telefone</th>
+                                    <th>E-mail</th>
+                                    <th>Cidade/UF</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="font-weight: 500;">Ana Pereira</div>
+                                    </td>
+                                    <td>111.222.333-44</td>
+                                    <td>(11) 98888-7777</td>
+                                    <td>ana@example.com</td>
+                                    <td>São Paulo/SP</td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn btn-view-cliente" title="Visualizar">👁️</button>
+                                        <button class="action-btn" title="Editar">✏️</button>
+                                        <button class="action-btn danger" title="Desativar">🚫</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="font-weight: 500;">André Nogueira</div>
+                                    </td>
+                                    <td>222.333.444-55</td>
+                                    <td>(21) 97777-6666</td>
+                                    <td>andre@example.com</td>
+                                    <td>Rio de Janeiro/RJ</td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn btn-view-cliente" title="Visualizar">👁️</button>
+                                        <button class="action-btn" title="Editar">✏️</button>
+                                        <button class="action-btn danger" title="Desativar">🚫</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="font-weight: 500;">João Silva</div>
+                                    </td>
+                                    <td>333.444.555-66</td>
+                                    <td>(31) 96666-5555</td>
+                                    <td>joao@example.com</td>
+                                    <td>Belo Horizonte/MG</td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn btn-view-cliente" title="Visualizar">👁️</button>
+                                        <button class="action-btn" title="Editar">✏️</button>
+                                        <button class="action-btn danger" title="Desativar">🚫</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <button class="page-btn" disabled>Anterior</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">Próximo</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Novo Cliente -->
+    <div class="modal-overlay" id="modal-cliente">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Novo Cliente</h3>
+                <button class="close-btn close-modal-cliente">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" placeholder="Ex: Maria da Silva">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">CPF</label>
+                            <input type="text" class="form-control" placeholder="000.000.000-00">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Telefone</label>
+                            <input type="text" class="form-control" placeholder="(00) 00000-0000">
+                        </div>
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label">E-mail</label>
+                            <input type="email" class="form-control" placeholder="email@exemplo.com">
+                        </div>
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label">Endereço</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Cidade</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Estado</label>
+                            <input type="text" class="form-control" placeholder="UF">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline close-modal-cliente">Cancelar</button>
+                <button class="btn btn-primary">Salvar Cliente</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detalhes do Cliente -->
+    <div class="modal-overlay" id="modal-view-cliente">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3 class="modal-title">Detalhes do Cliente</h3>
+                <button class="close-btn" id="close-view-cliente">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h4 style="margin-bottom: 1rem; color: var(--text-secondary);">Informações</h4>
+                        <p><strong>Nome:</strong> Ana Pereira</p>
+                        <p><strong>CPF:</strong> 111.222.333-44</p>
+                        <p><strong>Telefone:</strong> (11) 98888-7777</p>
+                        <p><strong>E-mail:</strong> ana@example.com</p>
+                        <p><strong>Endereço:</strong> Rua das Flores, 123</p>
+                        <p><strong>Local:</strong> São Paulo/SP</p>
+                        <p><strong>Cadastro:</strong> 05/10/2026</p>
+                        <p><strong>Status:</strong> <span class="badge badge-success">Ativo</span></p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 1rem; color: var(--text-secondary);">Resumo</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="card" style="padding: 1rem;">
+                                <div style="font-size: 0.75rem; color: var(--text-muted);">Compras</div>
+                                <div style="font-size: 1.25rem; font-weight: bold;">3</div>
+                            </div>
+                            <div class="card" style="padding: 1rem;">
+                                <div style="font-size: 0.75rem; color: var(--text-muted);">Total Gasto</div>
+                                <div style="font-size: 1.25rem; font-weight: bold; color: var(--primary-color);">R$ 13.659,60</div>
+                            </div>
+                            <div class="card" style="padding: 1rem;">
+                                <div style="font-size: 0.75rem; color: var(--text-muted);">Ticket Médio</div>
+                                <div style="font-size: 1.25rem; font-weight: bold;">R$ 4.553,20</div>
+                            </div>
+                            <div class="card" style="padding: 1rem;">
+                                <div style="font-size: 0.75rem; color: var(--text-muted);">Última Compra</div>
+                                <div style="font-size: 1.1rem; font-weight: bold;">05/10/2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-secondary);">Histórico de Compras</h4>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Venda</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th class="text-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#0045</td>
+                                <td>05/10/2026</td>
+                                <td><span class="badge badge-success">Aberta</span></td>
+                                <td class="text-right">R$ 13.659,60</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="btn-close-view-cliente">Fechar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/main.js"></script>
+    <script src="../js/clientes.js"></script>
+</body>
+</html>
+

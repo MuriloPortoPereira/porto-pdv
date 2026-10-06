@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias - Sistema de Vendas</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <style>
+        .category-row {
+            cursor: pointer;
+            background-color: var(--card-bg);
+            border-left: 4px solid transparent;
+            transition: all 0.2s;
+        }
+        .category-row:hover {
+            border-left-color: var(--primary-color);
+        }
+        .subcategory-container {
+            display: none;
+            background-color: var(--bg-color);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .subcategory-container.show {
+            display: block;
+        }
+        .subcat-list {
+            margin-top: 0.5rem;
+            list-style: none;
+        }
+        .subcat-list li {
+            padding: 0.75rem;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .subcat-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span>Vendas Tech</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span>Dashboard</span></a></li>
+                    <li><a href="vendas.html" class="nav-item"><span class="nav-icon">🛒</span><span>Vendas</span></a></li>
+                    <li><a href="clientes.html" class="nav-item"><span class="nav-icon">👥</span><span>Clientes</span></a></li>
+                    <li><a href="produtos.html" class="nav-item"><span class="nav-icon">📦</span><span>Produtos</span></a></li>
+                    <li><a href="categorias.html" class="nav-item active"><span class="nav-icon">🏷️</span><span>Categorias</span></a></li>
+                    <li><a href="estoque.html" class="nav-item"><span class="nav-icon">📉</span><span>Estoque</span></a></li>
+                    <li><a href="relatorios.html" class="nav-item"><span class="nav-icon">📈</span><span>Relatórios</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="configuracoes.html" class="nav-item"><span class="nav-icon">⚙️</span><span>Configurações</span></a>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">☰</button>
+                    <div class="header-title">Vendas Tech</div>
+                </div>
+
+                <div class="user-area">
+                    <button class="user-trigger" id="user-trigger">
+                        <div class="user-info">
+                            <span class="user-name">Admin</span>
+                            <span class="user-role">Administrador</span>
+                        </div>
+                        <div class="user-avatar">A</div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">▼</span>
+                    </button>
+                    
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="perfil.html" class="dropdown-item">👤 Meu perfil</a>
+                        <a href="configuracoes.html" class="dropdown-item">⚙️ Configurações</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="../login.html" class="dropdown-item" style="color: var(--danger-color);">🚪 Sair</a>
+                    </div>
+                </div>
+            </header>
+
+            <main class="content-area">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Categorias</h1>
+                        <p class="page-subtitle">Estruture a organização do catálogo da loja.</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-outline" id="btn-nova-subcategoria">
+                            + Nova Subcategoria
+                        </button>
+                        <button class="btn btn-primary" id="btn-nova-categoria">
+                            <span>+</span> Nova Categoria
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="table-container">
+                        <table class="table" style="border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px;"></th>
+                                    <th>Categoria</th>
+                                    <th class="text-center">Qtd. Subcategorias</th>
+                                    <th class="text-center">Qtd. Produtos</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Categoria 1 -->
+                                <tr class="category-row" onclick="toggleSub(this, 'subcat-1')">
+                                    <td class="text-center" style="color: var(--text-muted);">▶</td>
+                                    <td><div style="font-weight: 500;">Smartphones e Tablets</div></td>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">45</td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn" title="Editar" onclick="event.stopPropagation();">✏️</button>
+                                        <button class="action-btn danger" title="Desativar" onclick="event.stopPropagation();">🚫</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" style="padding: 0;">
+                                        <div class="subcategory-container" id="subcat-1">
+                                            <h4 style="color: var(--text-secondary); font-size: 0.875rem;">Subcategorias</h4>
+                                            <ul class="subcat-list">
+                                                <li>
+                                                    <span>Smartphones</span>
+                                                    <span>
+                                                        <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
+                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>Tablets</span>
+                                                    <span>
+                                                        <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
+                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>Acessórios Mobile</span>
+                                                    <span>
+                                                        <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
+                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Categoria 2 -->
+                                <tr class="category-row" onclick="toggleSub(this, 'subcat-2')">
+                                    <td class="text-center" style="color: var(--text-muted);">▶</td>
+                                    <td><div style="font-weight: 500;">Computadores e Notebooks</div></td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-center">28</td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn" title="Editar" onclick="event.stopPropagation();">✏️</button>
+                                        <button class="action-btn danger" title="Desativar" onclick="event.stopPropagation();">🚫</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" style="padding: 0;">
+                                        <div class="subcategory-container" id="subcat-2">
+                                            <h4 style="color: var(--text-secondary); font-size: 0.875rem;">Subcategorias</h4>
+                                            <ul class="subcat-list">
+                                                <li>
+                                                    <span>Notebooks</span>
+                                                    <span>
+                                                        <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
+                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>PCs Gamer</span>
+                                                    <span>
+                                                        <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
+                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Categoria 3 -->
+                                <tr class="category-row" onclick="toggleSub(this, 'subcat-3')">
+                                    <td class="text-center" style="color: var(--text-muted);">▶</td>
+                                    <td><div style="font-weight: 500;">Games</div></td>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">50</td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn" title="Editar" onclick="event.stopPropagation();">✏️</button>
+                                        <button class="action-btn danger" title="Desativar" onclick="event.stopPropagation();">🚫</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" style="padding: 0;">
+                                        <div class="subcategory-container" id="subcat-3">
+                                            <h4 style="color: var(--text-secondary); font-size: 0.875rem;">Subcategorias</h4>
+                                            <ul class="subcat-list">
+                                                <li>
+                                                    <span>Consoles</span>
+                                                    <span>
+                                                        <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
+                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>Jogos Mídia Física</span>
+                                                    <span>
+                                                        <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
+                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>Acessórios para Games</span>
+                                                    <span>
+                                                        <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
+                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Modal Nova Categoria -->
+    <div class="modal-overlay" id="modal-categoria">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3 class="modal-title">Nova Categoria</h3>
+                <button class="close-btn" onclick="document.getElementById('modal-categoria').classList.remove('show')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Nome da Categoria</label>
+                    <input type="text" class="form-control" placeholder="Ex: Colecionáveis">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Descrição</label>
+                    <textarea class="form-control" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select class="form-control">
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="document.getElementById('modal-categoria').classList.remove('show')">Cancelar</button>
+                <button class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nova Subcategoria -->
+    <div class="modal-overlay" id="modal-subcategoria">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3 class="modal-title">Nova Subcategoria</h3>
+                <button class="close-btn" onclick="document.getElementById('modal-subcategoria').classList.remove('show')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Categoria Mãe</label>
+                    <select class="form-control">
+                        <option>Smartphones e Tablets</option>
+                        <option>Computadores e Notebooks</option>
+                        <option>Games</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nome da Subcategoria</label>
+                    <input type="text" class="form-control" placeholder="Ex: Action Figures">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select class="form-control">
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="document.getElementById('modal-subcategoria').classList.remove('show')">Cancelar</button>
+                <button class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function toggleSub(row, id) {
+            const sub = document.getElementById(id);
+            sub.classList.toggle('show');
+            const arrow = row.querySelector('td:first-child');
+            if(sub.classList.contains('show')) {
+                arrow.innerHTML = '▼';
+            } else {
+                arrow.innerHTML = '▶';
+            }
+        }
+        
+        document.getElementById('btn-nova-categoria').addEventListener('click', () => {
+            document.getElementById('modal-categoria').classList.add('show');
+        });
+        
+        document.getElementById('btn-nova-subcategoria').addEventListener('click', () => {
+            document.getElementById('modal-subcategoria').classList.add('show');
+        });
+    </script>
+</body>
+</html>
+

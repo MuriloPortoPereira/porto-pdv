@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Sistema de Vendas</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span>Vendas Tech</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span>Dashboard</span></a></li>
+                    <li><a href="vendas.html" class="nav-item"><span class="nav-icon">🛒</span><span>Vendas</span></a></li>
+                    <li><a href="clientes.html" class="nav-item"><span class="nav-icon">👥</span><span>Clientes</span></a></li>
+                    <li><a href="produtos.html" class="nav-item active"><span class="nav-icon">📦</span><span>Produtos</span></a></li>
+                    <li><a href="categorias.html" class="nav-item"><span class="nav-icon">🏷️</span><span>Categorias</span></a></li>
+                    <li><a href="estoque.html" class="nav-item"><span class="nav-icon">📉</span><span>Estoque</span></a></li>
+                    <li><a href="relatorios.html" class="nav-item"><span class="nav-icon">📈</span><span>Relatórios</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="configuracoes.html" class="nav-item"><span class="nav-icon">⚙️</span><span>Configurações</span></a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">☰</button>
+                    <div class="header-title">Vendas Tech</div>
+                </div>
+
+                <div class="user-area">
+                    <button class="user-trigger" id="user-trigger">
+                        <div class="user-info">
+                            <span class="user-name">Admin</span>
+                            <span class="user-role">Administrador</span>
+                        </div>
+                        <div class="user-avatar">A</div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">▼</span>
+                    </button>
+                    
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="perfil.html" class="dropdown-item">👤 Meu perfil</a>
+                        <a href="configuracoes.html" class="dropdown-item">⚙️ Configurações</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="../login.html" class="dropdown-item" style="color: var(--danger-color);">🚪 Sair</a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="content-area">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Produtos</h1>
+                        <p class="page-subtitle">Gerencie o catálogo de produtos da loja.</p>
+                    </div>
+                    <button class="btn btn-primary" id="btn-novo-produto">
+                        <span>+</span> Novo Produto
+                    </button>
+                </div>
+
+                <div class="card">
+                    <!-- Filters -->
+                    <div class="filters-bar">
+                        <input type="text" class="form-control search-input" placeholder="Buscar por código ou produto...">
+                        <select class="form-control">
+                            <option value="">Marca</option>
+                            <option value="apple">Apple</option>
+                            <option value="samsung">Samsung</option>
+                            <option value="sony">Sony</option>
+                        </select>
+                        <select class="form-control">
+                            <option value="">Categoria</option>
+                            <option value="smartphones">Smartphones</option>
+                            <option value="games">Games</option>
+                            <option value="acessorios">Acessórios</option>
+                        </select>
+                        <select class="form-control">
+                            <option value="">Situação de estoque</option>
+                            <option value="normal">Normal</option>
+                            <option value="baixo">Baixo</option>
+                            <option value="sem_estoque">Sem Estoque</option>
+                        </select>
+                        <select class="form-control">
+                            <option value="">Status</option>
+                            <option value="1">Ativo</option>
+                            <option value="0">Inativo</option>
+                        </select>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Produto</th>
+                                    <th>Marca</th>
+                                    <th>Categoria</th>
+                                    <th>Preço</th>
+                                    <th>Estoque</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PRD-001</td>
+                                    <td>
+                                        <div style="font-weight: 500;">iPhone 16 Pro 256GB</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-muted);">Smartphones > Apple</div>
+                                    </td>
+                                    <td>Apple</td>
+                                    <td>Smartphones</td>
+                                    <td>R$ 8.599,00</td>
+                                    <td><span class="badge badge-success">6 Normal</span></td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn" title="Visualizar">👁️</button>
+                                        <button class="action-btn" title="Editar">✏️</button>
+                                        <button class="action-btn danger" title="Desativar">🚫</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PRD-002</td>
+                                    <td>
+                                        <div style="font-weight: 500;">Galaxy S25 Ultra 512GB</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-muted);">Smartphones > Samsung</div>
+                                    </td>
+                                    <td>Samsung</td>
+                                    <td>Smartphones</td>
+                                    <td>R$ 7.999,00</td>
+                                    <td><span class="badge badge-success">14 Normal</span></td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn" title="Visualizar">👁️</button>
+                                        <button class="action-btn" title="Editar">✏️</button>
+                                        <button class="action-btn danger" title="Desativar">🚫</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PRD-003</td>
+                                    <td>
+                                        <div style="font-weight: 500;">PlayStation 5 Slim</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-muted);">Games > Consoles</div>
+                                    </td>
+                                    <td>Sony</td>
+                                    <td>Games</td>
+                                    <td>R$ 3.899,00</td>
+                                    <td><span class="badge badge-warning">2 Baixo</span></td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn" title="Visualizar">👁️</button>
+                                        <button class="action-btn" title="Editar">✏️</button>
+                                        <button class="action-btn danger" title="Desativar">🚫</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PRD-004</td>
+                                    <td>
+                                        <div style="font-weight: 500;">DualSense Branco</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-muted);">Games > Acessórios</div>
+                                    </td>
+                                    <td>Sony</td>
+                                    <td>Games</td>
+                                    <td>R$ 450,00</td>
+                                    <td><span class="badge badge-danger">0 Esgotado</span></td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn" title="Visualizar">👁️</button>
+                                        <button class="action-btn" title="Editar">✏️</button>
+                                        <button class="action-btn danger" title="Desativar">🚫</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PRD-005</td>
+                                    <td>
+                                        <div style="font-weight: 500;">Raspberry Pi 5</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-muted);">Maker > Placas</div>
+                                    </td>
+                                    <td>Raspberry Pi</td>
+                                    <td>Maker</td>
+                                    <td>R$ 799,00</td>
+                                    <td><span class="badge badge-success">10 Normal</span></td>
+                                    <td><span class="badge badge-secondary" style="background:#e2e8f0; color:#475569">Inativo</span></td>
+                                    <td class="text-right">
+                                        <button class="action-btn" title="Visualizar">👁️</button>
+                                        <button class="action-btn" title="Editar">✏️</button>
+                                        <button class="action-btn success" style="color:var(--success-color);" title="Ativar">✔️</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="page-btn" disabled>Anterior</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">Próximo</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Novo Produto -->
+    <div class="modal-overlay" id="modal-produto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Novo Produto</h3>
+                <button class="close-btn" id="close-modal-produto">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-produto">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Código</label>
+                            <input type="text" class="form-control" placeholder="Ex: PRD-006">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nome do Produto</label>
+                            <input type="text" class="form-control" placeholder="Nome do item">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Marca</label>
+                            <select class="form-control">
+                                <option>Selecione...</option>
+                                <option>Apple</option>
+                                <option>Samsung</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subcategoria</label>
+                            <select class="form-control">
+                                <option>Selecione...</option>
+                                <option>Smartphones</option>
+                                <option>Acessórios</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Custo (R$)</label>
+                            <input type="number" step="0.01" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Preço (R$)</label>
+                            <input type="number" step="0.01" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Estoque Atual</label>
+                            <input type="number" class="form-control" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Estoque Mínimo</label>
+                            <input type="number" class="form-control" value="0">
+                        </div>
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label">Descrição</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label">Status</label>
+                            <select class="form-control">
+                                <option value="1">Ativo</option>
+                                <option value="0">Inativo</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="btn-cancelar-produto">Cancelar</button>
+                <button class="btn btn-primary">Salvar Produto</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/main.js"></script>
+    <script src="../js/produtos.js"></script>
+</body>
+</html>
+
