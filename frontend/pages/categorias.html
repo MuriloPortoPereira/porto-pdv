@@ -42,6 +42,7 @@
             border-bottom: none;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="app-container">
@@ -52,24 +53,24 @@
             </div>
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span>Dashboard</span></a></li>
-                    <li><a href="vendas.html" class="nav-item"><span class="nav-icon">🛒</span><span>Vendas</span></a></li>
-                    <li><a href="clientes.html" class="nav-item"><span class="nav-icon">👥</span><span>Clientes</span></a></li>
-                    <li><a href="produtos.html" class="nav-item"><span class="nav-icon">📦</span><span>Produtos</span></a></li>
-                    <li><a href="categorias.html" class="nav-item active"><span class="nav-icon">🏷️</span><span>Categorias</span></a></li>
-                    <li><a href="estoque.html" class="nav-item"><span class="nav-icon">📉</span><span>Estoque</span></a></li>
-                    <li><a href="relatorios.html" class="nav-item"><span class="nav-icon">📈</span><span>Relatórios</span></a></li>
+                    <li><a href="dashboard.html" class="nav-item"><span class="nav-icon"><i class="fas fa-chart-pie"></i></span><span>Dashboard</span></a></li>
+                    <li><a href="vendas.html" class="nav-item"><span class="nav-icon"><i class="fas fa-shopping-cart"></i></span><span>Vendas</span></a></li>
+                    <li><a href="clientes.html" class="nav-item"><span class="nav-icon"><i class="fas fa-users"></i></span><span>Clientes</span></a></li>
+                    <li><a href="produtos.html" class="nav-item"><span class="nav-icon"><i class="fas fa-box"></i></span><span>Produtos</span></a></li>
+                    <li><a href="categorias.html" class="nav-item active"><span class="nav-icon"><i class="fas fa-tags"></i></span><span>Categorias</span></a></li>
+                    <li><a href="estoque.html" class="nav-item"><span class="nav-icon"><i class="fas fa-cubes"></i></span><span>Estoque</span></a></li>
+                    <li><a href="relatorios.html" class="nav-item"><span class="nav-icon"><i class="fas fa-chart-line"></i></span><span>Relatórios</span></a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <a href="configuracoes.html" class="nav-item"><span class="nav-icon">⚙️</span><span>Configurações</span></a>
+                <a href="configuracoes.html" class="nav-item"><span class="nav-icon"><i class="fas fa-cog"></i></span><span>Configurações</span></a>
             </div>
         </aside>
 
         <div class="main-content">
             <header class="top-header">
                 <div class="header-left">
-                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">☰</button>
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
                     <div class="header-title">Vendas Tech</div>
                 </div>
 
@@ -80,14 +81,14 @@
                             <span class="user-role">Administrador</span>
                         </div>
                         <div class="user-avatar">A</div>
-                        <span style="font-size: 0.75rem; color: var(--text-muted);">▼</span>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     
                     <div class="user-dropdown" id="user-dropdown">
-                        <a href="perfil.html" class="dropdown-item">👤 Meu perfil</a>
-                        <a href="configuracoes.html" class="dropdown-item">⚙️ Configurações</a>
+                        <a href="perfil.html" class="dropdown-item"><i class="fas fa-user"></i> Meu perfil</a>
+                        <a href="configuracoes.html" class="dropdown-item"><i class="fas fa-cog"></i> Configurações</a>
                         <div class="dropdown-divider"></div>
-                        <a href="../login.html" class="dropdown-item" style="color: var(--danger-color);">🚪 Sair</a>
+                        <a href="../login.html" class="dropdown-item" style="color: var(--danger-color);"><i class="fas fa-sign-out-alt"></i> Sair</a>
                     </div>
                 </div>
             </header>
@@ -130,8 +131,8 @@
                                     <td class="text-center">45</td>
                                     <td><span class="badge badge-success">Ativo</span></td>
                                     <td class="text-right">
-                                        <button class="action-btn" title="Editar" onclick="event.stopPropagation();">✏️</button>
-                                        <button class="action-btn danger" title="Desativar" onclick="event.stopPropagation();">🚫</button>
+                                        <button class="action-btn" title="Editar" onclick="event.stopPropagation();"><i class="fas fa-pen"></i></button>
+                                        <button class="action-btn danger" title="Desativar" onclick="event.stopPropagation();"><i class="fas fa-ban"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -143,21 +144,21 @@
                                                     <span>Smartphones</span>
                                                     <span>
                                                         <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
-                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                        <button class="action-btn" title="Editar"><i class="fas fa-pen"></i></button>
                                                     </span>
                                                 </li>
                                                 <li>
                                                     <span>Tablets</span>
                                                     <span>
                                                         <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
-                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                        <button class="action-btn" title="Editar"><i class="fas fa-pen"></i></button>
                                                     </span>
                                                 </li>
                                                 <li>
                                                     <span>Acessórios Mobile</span>
                                                     <span>
                                                         <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
-                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                        <button class="action-btn" title="Editar"><i class="fas fa-pen"></i></button>
                                                     </span>
                                                 </li>
                                             </ul>
@@ -173,8 +174,8 @@
                                     <td class="text-center">28</td>
                                     <td><span class="badge badge-success">Ativo</span></td>
                                     <td class="text-right">
-                                        <button class="action-btn" title="Editar" onclick="event.stopPropagation();">✏️</button>
-                                        <button class="action-btn danger" title="Desativar" onclick="event.stopPropagation();">🚫</button>
+                                        <button class="action-btn" title="Editar" onclick="event.stopPropagation();"><i class="fas fa-pen"></i></button>
+                                        <button class="action-btn danger" title="Desativar" onclick="event.stopPropagation();"><i class="fas fa-ban"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -186,14 +187,14 @@
                                                     <span>Notebooks</span>
                                                     <span>
                                                         <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
-                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                        <button class="action-btn" title="Editar"><i class="fas fa-pen"></i></button>
                                                     </span>
                                                 </li>
                                                 <li>
                                                     <span>PCs Gamer</span>
                                                     <span>
                                                         <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
-                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                        <button class="action-btn" title="Editar"><i class="fas fa-pen"></i></button>
                                                     </span>
                                                 </li>
                                             </ul>
@@ -209,8 +210,8 @@
                                     <td class="text-center">50</td>
                                     <td><span class="badge badge-success">Ativo</span></td>
                                     <td class="text-right">
-                                        <button class="action-btn" title="Editar" onclick="event.stopPropagation();">✏️</button>
-                                        <button class="action-btn danger" title="Desativar" onclick="event.stopPropagation();">🚫</button>
+                                        <button class="action-btn" title="Editar" onclick="event.stopPropagation();"><i class="fas fa-pen"></i></button>
+                                        <button class="action-btn danger" title="Desativar" onclick="event.stopPropagation();"><i class="fas fa-ban"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -222,21 +223,21 @@
                                                     <span>Consoles</span>
                                                     <span>
                                                         <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
-                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                        <button class="action-btn" title="Editar"><i class="fas fa-pen"></i></button>
                                                     </span>
                                                 </li>
                                                 <li>
                                                     <span>Jogos Mídia Física</span>
                                                     <span>
                                                         <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
-                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                        <button class="action-btn" title="Editar"><i class="fas fa-pen"></i></button>
                                                     </span>
                                                 </li>
                                                 <li>
                                                     <span>Acessórios para Games</span>
                                                     <span>
                                                         <span class="badge badge-success" style="margin-right: 1rem;">Ativo</span>
-                                                        <button class="action-btn" title="Editar">✏️</button>
+                                                        <button class="action-btn" title="Editar"><i class="fas fa-pen"></i></button>
                                                     </span>
                                                 </li>
                                             </ul>
@@ -324,7 +325,7 @@
             sub.classList.toggle('show');
             const arrow = row.querySelector('td:first-child');
             if(sub.classList.contains('show')) {
-                arrow.innerHTML = '▼';
+                arrow.innerHTML = '<i class="fas fa-chevron-down"></i>';
             } else {
                 arrow.innerHTML = '▶';
             }
