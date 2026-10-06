@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Venda - Sistema de Vendas</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span>Vendas Tech</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span>Dashboard</span></a></li>
+                    <li><a href="vendas.html" class="nav-item active"><span class="nav-icon">🛒</span><span>Vendas</span></a></li>
+                    <li><a href="clientes.html" class="nav-item"><span class="nav-icon">👥</span><span>Clientes</span></a></li>
+                    <li><a href="produtos.html" class="nav-item"><span class="nav-icon">📦</span><span>Produtos</span></a></li>
+                    <li><a href="categorias.html" class="nav-item"><span class="nav-icon">🏷️</span><span>Categorias</span></a></li>
+                    <li><a href="estoque.html" class="nav-item"><span class="nav-icon">📉</span><span>Estoque</span></a></li>
+                    <li><a href="relatorios.html" class="nav-item"><span class="nav-icon">📈</span><span>Relatórios</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="configuracoes.html" class="nav-item"><span class="nav-icon">⚙️</span><span>Configurações</span></a>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">☰</button>
+                    <div class="header-title">Vendas Tech</div>
+                </div>
+
+                <div class="user-area">
+                    <button class="user-trigger" id="user-trigger">
+                        <div class="user-info">
+                            <span class="user-name">Admin</span>
+                            <span class="user-role">Administrador</span>
+                        </div>
+                        <div class="user-avatar">A</div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">▼</span>
+                    </button>
+                    
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="perfil.html" class="dropdown-item">👤 Meu perfil</a>
+                        <a href="configuracoes.html" class="dropdown-item">⚙️ Configurações</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="../login.html" class="dropdown-item" style="color: var(--danger-color);">🚪 Sair</a>
+                    </div>
+                </div>
+            </header>
+
+            <main class="content-area">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Nova Venda</h1>
+                        <p class="page-subtitle">Registre uma nova venda de forma rápida e eficiente.</p>
+                        <p style="font-size: 0.875rem; color: var(--primary-color); font-weight: 500; margin-top: 0.5rem;"><i class="fas fa-user-tag"></i> Venda sendo registrada por: Admin</p>
+                    </div>
+                    <a href="vendas.html" class="btn btn-outline">
+                        Voltar para Vendas
+                    </a>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;" class="dashboard-tables">
+                    
+                    <!-- Lado Esquerdo: Busca e Lista de Itens -->
+                    <div>
+                        <div class="card" style="margin-bottom: 1.5rem;">
+                            <div class="form-group">
+                                <label class="form-label">Cliente</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="text" class="form-control w-100" placeholder="Buscar cliente por nome ou CPF...">
+                                    <button class="btn btn-primary" title="Buscar Cliente">🔍</button>
+                                </div>
+                                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Cliente Selecionado: <strong>Nenhum</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-bottom: 1.5rem;">
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label class="form-label">Adicionar Produto</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="text" class="form-control w-100" placeholder="Buscar por código ou nome (Ex: MacBook, iPhone)...">
+                                    <button class="btn btn-primary" title="Adicionar ao Carrinho">+</button>
+                                </div>
+                            </div>
+
+                            <h4 style="margin-bottom: 1rem; color: var(--text-secondary);">Itens no Carrinho</h4>
+                            <div class="table-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Produto</th>
+                                            <th class="text-center">Quantidade</th>
+                                            <th class="text-right">Unitário</th>
+                                            <th class="text-right">Subtotal</th>
+                                            <th class="text-right">Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-tbody">
+                                        <!-- Mock Initial State -->
+                                        <tr>
+                                            <td>
+                                                <div style="font-weight: 500;">iPhone 16 Pro 256GB</div>
+                                                <div style="font-size: 0.75rem; color: var(--text-muted);">PRD-001</div>
+                                            </td>
+                                            <td class="text-center">
+                                                <input type="number" class="form-control" style="width: 70px; text-align: center; display: inline-block; padding: 0.25rem;" value="1" min="1">
+                                            </td>
+                                            <td class="text-right">R$ 8.599,00</td>
+                                            <td class="text-right">R$ 8.599,00</td>
+                                            <td class="text-right">
+                                                <button class="action-btn danger">🗑️</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="font-weight: 500;">Cabo USB-C</div>
+                                                <div style="font-size: 0.75rem; color: var(--text-muted);">PRD-010</div>
+                                            </td>
+                                            <td class="text-center">
+                                                <input type="number" class="form-control" style="width: 70px; text-align: center; display: inline-block; padding: 0.25rem;" value="2" min="1">
+                                            </td>
+                                            <td class="text-right">R$ 89,90</td>
+                                            <td class="text-right">R$ 179,80</td>
+                                            <td class="text-right">
+                                                <button class="action-btn danger">🗑️</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Resumo e Checkout -->
+                    <div>
+                        <div class="card" style="position: sticky; top: calc(var(--header-height) + 1.5rem);">
+                            <h3 style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">Resumo da Venda</h3>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Canal de Venda</label>
+                                <select class="form-control">
+                                    <option value="LOJA_FISICA">Loja Física</option>
+                                    <option value="ONLINE">Online</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Forma de Pagamento</label>
+                                <select class="form-control">
+                                    <option value="PIX">PIX</option>
+                                    <option value="DINHEIRO">Dinheiro</option>
+                                    <option value="CREDITO">Cartão de Crédito</option>
+                                    <option value="DEBITO">Cartão de Débito</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 2rem;">
+                                <label class="form-label">Desconto (R$)</label>
+                                <input type="number" class="form-control" value="0.00" step="0.01">
+                            </div>
+
+                            <div style="background-color: var(--bg-color); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-secondary);">
+                                    <span>Subtotal</span>
+                                    <span>R$ 8.778,80</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--danger-color);">
+                                    <span>Desconto</span>
+                                    <span>- R$ 0,00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border-color); font-weight: bold; font-size: 1.5rem; color: var(--primary-color);">
+                                    <span>Total</span>
+                                    <span>R$ 8.778,80</span>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                                <button class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.125rem;">Finalizar Venda</button>
+                                <button class="btn btn-outline" style="width: 100%; color: var(--danger-color); border-color: var(--border-color);">Cancelar</button>
+                            </div>
+                            
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1.5rem; text-align: center;">
+                                Os cálculos acima são apenas representações visuais.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="../js/main.js"></script>
+    <script>
+        // Placeholder for pure JS visual interaction for cart if needed.
+        // It's mostly mock in this frontend stage.
+    </script>
+</body>
+</html>
+
